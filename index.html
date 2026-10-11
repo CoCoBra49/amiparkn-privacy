@@ -123,28 +123,40 @@
             box-shadow: 0 8px 25px rgba(0, 114, 255, 0.5);
         }
 
-        /* کانتینر مدل سه‌بعدی */
+        /* کانتینر تصویر بنر اصلی بالای سایت */
         .hero-container {
             position: relative;
             width: 100%;
-            height: 70vh; /* کمی بلندتر */
-            margin-top: 80px;
+            margin-top: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px 5%;
             animation: fadeInUp 1s ease-out 0.2s both;
         }
 
-        .spline-frame {
+        .hero-banner-img {
             width: 100%;
-            height: 100%;
-            border: none;
+            max-width: 1050px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+            background: rgba(22, 27, 34, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-banner-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
         }
 
         /* محتوای اصلی معرفی */
         .main-content {
             max-width: 900px;
-            margin: -40px auto 100px auto; /* فاصله منفی برای رفتن روی مدل */
+            margin: 40px auto 100px auto;
             text-align: center;
             padding: 0 20px;
             position: relative;
@@ -153,7 +165,7 @@
         }
 
         h1 {
-            font-size: 3.2rem; /* بزرگتر و خواناتر */
+            font-size: 3.2rem;
             font-weight: 900;
             color: #ffffff;
             margin-bottom: 25px;
@@ -207,19 +219,18 @@
 
         /* کارت شیشه‌ای و مدرن (Glass Card) */
         .step-card {
-            background: rgba(22, 27, 34, 0.5); /* نیمه شفاف */
-            border: 1px solid rgba(255, 255, 255, 0.05); /* مرز بسیار نازک */
+            background: rgba(22, 27, 34, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 24px;
             padding: 40px 25px;
             position: relative;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* انیمیشن خاص */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
         }
 
-        /* نور پس‌زمینه کارت هنگام هاور */
         .step-card::after {
             content: '';
             position: absolute;
@@ -242,7 +253,7 @@
         }
 
         .step-card:hover::after {
-            top: 110%; /* بالا آمدن نور */
+            top: 110%;
         }
 
         .step-number {
@@ -306,7 +317,7 @@
         .faq-question {
             font-size: 1.15rem;
             font-weight: 700;
-            color: #4facfe; /* رنگ اصلی */
+            color: #4facfe;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
@@ -316,11 +327,11 @@
         .faq-answer {
             color: #d1d5db;
             font-size: 1rem;
-            padding-left: 32px; /* هم‌ترازی با آیکون */
+            padding-left: 32px;
         }
 
         .faq-answer strong {
-            color: #00f2fe; /* برجسته کردن اعداد استرداد */
+            color: #00f2fe;
         }
 
         /* فوتر حرفه‌ای */
@@ -362,7 +373,6 @@
         /* بهینه‌سازی برای موبایل */
         @media (max-width: 768px) {
             h1 { font-size: 2.4rem; }
-            .hero-container { height: 50vh; }
             header { padding: 10px 5%; }
             .nav-btn { padding: 10px 20px; font-size: 0.85rem; }
             .section-title { font-size: 1.8rem; }
@@ -385,9 +395,11 @@
         <a href="#how-it-works" class="nav-btn">Entdecken</a>
     </header>
 
-    <!-- کانتینر مدل سه‌بعدی Spline -->
+    <!-- کانتینر تصویر بنر گرافیکی جدید -->
     <div class="hero-container">
-        <iframe src='https://my.spline.design/spline3dstarterfile-9XChBwK6pJUmWFrn2BkpsRYd/' frameborder='0' width='100%' height='100%' class="spline-frame"></iframe>
+        <div class="hero-banner-img">
+            <img src="hero-banner.png" alt="AMIPARKN Plattform Banner">
+        </div>
     </div>
 
     <!-- معرفی اصلی -->
@@ -440,7 +452,7 @@
             <div class="faq-item">
                 <div class="faq-question"><span>⏱️</span> Wie funktioniert die Erstattung?</div>
                 <div class="faq-answer">
-                    Eine Stornierung ist مستقیم in der App möglich:<br>
+                    Eine Stornierung ist direkt in der App möglich:<br>
                     • Mehr als 120 Min. vor Beginn: <strong>100% Erstattung</strong> des Parkpreis.<br>
                     • 30 bis 120 Min. vor Beginn: <strong>70% Erstattung</strong>.<br>
                     • 2 bis 30 Min. vor Beginn: <strong>50% Erstattung</strong>.<br>
@@ -455,12 +467,12 @@
 
             <div class="faq-item">
                 <div class="faq-question"><span>🅿️</span> Kann ich meinen Parkplatz vermieten?</div>
-                <div class="faq-answer">Sie können Ihren privaten Stellplatz ganz einfach über die AMIPARKN App registrieren, Verfügbarkeiten festlegen und مستقیم Geld verdienen.</div>
+                <div class="faq-answer">Sie können Ihren privaten Stellplatz ganz einfach über die AMIPARKN App registrieren, Verfügbarkeiten festlegen und direkt Geld verdienen.</div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question"><span>✉️</span> Wie erreiche ich den Support?</div>
-                <div class="faq-answer">Unser Team hilft Ihnen gerne weiter. Kontaktieren Sie uns مستقیم per E-Mail unter <a href="mailto:amiparkn.support@gmail.com" style="color: #00f2fe; text-decoration: none; font-weight: 600;">amiparkn.support@gmail.com</a>.</div>
+                <div class="faq-answer">Unser Team hilft Ihnen gerne weiter. Kontaktieren Sie uns direkt per E-Mail unter <a href="mailto:amiparkn.support@gmail.com" style="color: #00f2fe; text-decoration: none; font-weight: 600;">amiparkn.support@gmail.com</a>.</div>
             </div>
         </div>
     </div>
