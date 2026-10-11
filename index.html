@@ -4,21 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMIPARKN - Intelligente Parkplatz-Plattform (Beta)</title>
+    <!-- افزودن فونت مدرن Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
+            scroll-behavior: smooth; /* اسکرول نرم */
         }
 
         body {
-            background-color: #0b0f19;
+            background-color: #0b0f19; /* پس‌زمینه بسیار تیره */
             color: #f3f4f6;
             overflow-x: hidden;
             line-height: 1.6;
         }
 
+        /* انیمیشن‌های ورود صفحه */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* بنر اطلاع‌رسانی بتا */
         .beta-banner {
             background: linear-gradient(90deg, #ff9900, #ff5500);
             color: #000;
@@ -27,21 +42,30 @@
             font-weight: 700;
             font-size: 0.85rem;
             letter-spacing: 0.5px;
-        }
-
-        header {
             position: fixed;
-            top: 33px;
+            top: 0;
             left: 0;
             width: 100%;
-            background: rgba(11, 15, 25, 0.85);
-            backdrop-filter: blur(10px);
+            z-index: 1001;
+            box-shadow: 0 2px 10px rgba(255, 85, 0, 0.3);
+        }
+
+        /* هدر شیشه‌ای (Glassmorphism) */
+        header {
+            position: fixed;
+            top: 33px; /* زیر بنر بتا */
+            left: 0;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(15px); /* افکت تاری */
+            -webkit-backdrop-filter: blur(15px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
+            animation: fadeInDown 0.8s ease-out;
         }
 
         .logo-container {
@@ -51,59 +75,64 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: #ffffff;
+            letter-spacing: -1px;
         }
 
+        /* برندینگ اختصاصی با حرف N قرمز */
         .brand-text {
             background: linear-gradient(45deg, #00f2fe, #4facfe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 800;
         }
 
         .highlight-n {
             color: #ff3b30 !important;
             -webkit-text-fill-color: #ff3b30 !important;
             font-weight: 900;
-            text-shadow: 0 0 15px rgba(255, 59, 48, 0.6);
+            text-shadow: 0 0 15px rgba(255, 59, 48, 0.8); /* درخشش نئونی */
         }
 
         .beta-badge {
-            background: rgba(0, 242, 254, 0.15);
+            background: rgba(0, 242, 254, 0.1);
             color: #00f2fe;
-            border: 1px solid rgba(0, 242, 254, 0.4);
-            font-size: 0.75rem;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-weight: 600;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .nav-btn {
             background: linear-gradient(45deg, #00c6ff, #0072ff);
             color: white;
-            padding: 10px 22px;
-            border-radius: 20px;
+            padding: 12px 26px;
+            border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.9rem;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.3);
         }
 
         .nav-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 114, 255, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.5);
         }
 
+        /* کانتینر مدل سه‌بعدی */
         .hero-container {
             position: relative;
             width: 100%;
-            height: 65vh;
+            height: 70vh; /* کمی بلندتر */
             margin-top: 80px;
             display: flex;
             justify-content: center;
             align-items: center;
+            animation: fadeInUp 1s ease-out 0.2s both;
         }
 
         .spline-frame {
@@ -112,236 +141,260 @@
             border: none;
         }
 
+        /* محتوای اصلی معرفی */
         .main-content {
-            max-width: 1000px;
-            margin: -20px auto 50px auto;
+            max-width: 900px;
+            margin: -40px auto 100px auto; /* فاصله منفی برای رفتن روی مدل */
             text-align: center;
             padding: 0 20px;
             position: relative;
             z-index: 10;
+            animation: fadeInUp 1s ease-out 0.4s both;
         }
 
         h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
+            font-size: 3.2rem; /* بزرگتر و خواناتر */
+            font-weight: 900;
             color: #ffffff;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            letter-spacing: -1.5px;
+            line-height: 1.2;
         }
 
         p.subtitle {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: #9ca3af;
-            max-width: 750px;
-            margin: 0 auto 30px auto;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            font-weight: 400;
         }
 
+        /* استایل مشترک بخش‌ها */
         .how-it-works-section, .faq-section {
-            max-width: 1000px;
-            margin: 0 auto 80px auto;
+            max-width: 1100px;
+            margin: 0 auto 120px auto;
             padding: 0 20px;
         }
 
         .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 40px;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 60px;
             color: #ffffff;
             text-align: center;
+            position: relative;
         }
 
+        /* خط تزیینی زیر عنوان */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #00f2fe, #4facfe);
+            border-radius: 2px;
+        }
+
+        /* گرید نحوه کار */
         .steps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
         }
 
+        /* کارت شیشه‌ای و مدرن (Glass Card) */
         .step-card {
-            background: rgba(22, 27, 34, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 30px 20px;
+            background: rgba(22, 27, 34, 0.5); /* نیمه شفاف */
+            border: 1px solid rgba(255, 255, 255, 0.05); /* مرز بسیار نازک */
+            border-radius: 24px;
+            padding: 40px 25px;
             position: relative;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* انیمیشن خاص */
+            overflow: hidden;
+        }
+
+        /* نور پس‌زمینه کارت هنگام هاور */
+        .step-card::after {
+            content: '';
+            position: absolute;
+            top: 150%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: rgba(79, 172, 254, 0.2);
+            border-radius: 50%;
+            filter: blur(40px);
+            transition: all 0.5s ease;
+            z-index: -1;
         }
 
         .step-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(79, 172, 254, 0.3);
+            background: rgba(22, 27, 34, 0.7);
+        }
+
+        .step-card:hover::after {
+            top: 110%; /* بالا آمدن نور */
         }
 
         .step-number {
             position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
-            color: #fff;
-            width: 32px;
-            height: 32px;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 800;
-            font-size: 0.9rem;
+            font-weight: 900;
+            font-size: 1rem;
         }
 
         .step-icon {
-            font-size: 2.5rem;
-            margin-top: 10px;
-            margin-bottom: 15px;
+            font-size: 3rem;
+            margin-bottom: 25px;
+            display: inline-block;
         }
 
         .step-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-weight: 700;
         }
 
         .step-card p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #9ca3af;
+            font-weight: 400;
         }
 
-        /* FAQ accordion style */
+        /* استایل FAQ اختصاصی */
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         .faq-item {
-            background: rgba(22, 27, 34, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            margin-bottom: 15px;
-            padding: 20px;
+            background: rgba(22, 27, 34, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            margin-bottom: 18px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(22, 27, 34, 0.7);
+            border-color: rgba(79, 172, 254, 0.2);
+            transform: translateX(5px);
         }
 
         .faq-question {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #4facfe;
-            margin-bottom: 10px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #4facfe; /* رنگ اصلی */
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .faq-answer {
-            color: #9ca3af;
-            font-size: 0.95rem;
+            color: #d1d5db;
+            font-size: 1rem;
+            padding-left: 32px; /* هم‌ترازی با آیکون */
         }
 
+        .faq-answer strong {
+            color: #00f2fe; /* برجسته کردن اعداد استرداد */
+        }
+
+        /* فوتر حرفه‌ای */
         footer {
             background: #07090f;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
             color: #6b7280;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: inline-block;
         }
 
         .footer-links {
-            margin-top: 12px;
+            margin-top: 15px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         .footer-links a {
             color: #9ca3af;
             text-decoration: none;
+            transition: all 0.2s ease;
+            font-weight: 600;
         }
 
         .footer-links a:hover {
             color: #00f2fe;
+            transform: translateY(-1px);
+        }
+
+        /* بهینه‌سازی برای موبایل */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.4rem; }
+            .hero-container { height: 50vh; }
+            header { padding: 10px 5%; }
+            .nav-btn { padding: 10px 20px; font-size: 0.85rem; }
+            .section-title { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- بنر اطلاع‌رسانی بتا -->
     <div class="beta-banner">
         🚀 AMIPARKN befindet sich aktuell in der öffentlichen Beta-Phase (Open Beta)
     </div>
 
+    <!-- هدر شیشه‌ای -->
     <header>
         <div class="logo-container">
             <div class="logo"><span class="brand-text">AMIPARK</span><span class="highlight-n">N</span></div>
             <span class="beta-badge">BETA</span>
         </div>
-        <a href="#how-it-works" class="nav-btn">Wie es funktioniert</a>
+        <a href="#how-it-works" class="nav-btn">Entdecken</a>
     </header>
 
+    <!-- کانتینر مدل سه‌بعدی Spline -->
     <div class="hero-container">
         <iframe src='https://my.spline.design/spline3dstarterfile-9XChBwK6pJUmWFrn2BkpsRYd/' frameborder='0' width='100%' height='100%' class="spline-frame"></iframe>
     </div>
 
+    <!-- معرفی اصلی -->
     <div class="main-content">
         <h1>Parken neu gedacht mit <span class="brand-text">AMIPARK</span><span class="highlight-n">N</span></h1>
         <p class="subtitle">Willkommen beim offiziellen Beta-Test! Werden Sie Teil der ersten Nutzer-Community und testen Sie die Zukunft des privaten Parkens.</p>
     </div>
 
-    <div class="how-it-works-section" id="how-it-works">
-        <h2 class="section-title">Wie es funktioniert</h2>
-        <div class="steps-grid">
-            <div class="step-card">
-                <div class="step-number">1</div>
-                <div class="step-icon">🔍</div>
-                <h3>Parkplatz suchen</h3>
-                <p>Finden Sie verfügbare private Parkplätze in Ihrer Nähe über unsere interaktive Karte.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">2</div>
-                <div class="step-icon">📅</div>
-                <h3>Zeitraum wählen</h3>
-                <p>Wählen Sie einfach das gewünschte Datum und die Zeit für Ihren Parkplatz aus.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">3</div>
-                <div class="step-icon">💳</div>
-                <h3>Sicher bezahlen</h3>
-                <p>Buchen und bezahlen Sie bargeldlos und sicher über Stripe direkt in der App.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">4</div>
-                <div class="step-icon">🚗</div>
-                <h3>Einfach parken</h3>
-                <p>Navigieren Sie zum Parkplatz und genießen Sie eine stressfreie Ankunft.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- بخش FAQ برگرفته از اپلیکیشن -->
-    <div class="faq-section">
-        <h2 class="section-title">Häufig gestellte Fragen (FAQ)</h2>
-        
-        <div class="faq-item">
-            <div class="faq-question">💳 Wie funktioniert die Stornierung und Erstattung?</div>
-            <div class="faq-answer">
-                Eine Stornierung ist direkt in der App möglich:<br>
-                • Mehr als 120 Min. vor Beginn: <strong>100% Erstattung</strong> des Parkpreis.<br>
-                • 30 bis 120 Min. vor Beginn: <strong>70% Erstattung</strong>.<br>
-                • 2 bis 30 Min. vor Beginn: <strong>50% Erstattung</strong>.<br>
-                • Weniger als 2 Min. vor Beginn: Keine Erstattung.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">🔒 Sind meine Zahlungen sicher?</div>
-            <div class="faq-answer">Ja, die Zahlungsabwicklung erfolgt verschlüsselt und nach höchsten Sicherheitsstandards über Stripe. Es werden keine Kreditkartendaten auf unseren Servern gespeichert.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">🅿️ Wie kann ich meinen eigenen Parkplatz vermieten?</div>
-            <div class="faq-answer">Sie können Ihren privaten Stellplatz ganz einfach über die AMIPARKN App registrieren, Verfügbarkeiten festlegen und direkt Geld verdienen.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">✉️ Wie erreiche ich den Support?</div>
-            <div class="faq-answer">Unser Support-Team hilft Ihnen bei allen Fragen gerne weiter. Kontaktieren Sie uns direkt per E-Mail unter <a href="mailto:amiparkn.support@gmail.com" style="color: #00f2fe;">amiparkn.support@gmail.com</a>.</div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 AMIPARKN (Beta). Alle Rechte vorbehalten.</p>
-        <div class="footer-links">
-            <a href="impressum.html">Impressum</a>
-            <a href="privacy.html">Datenschutz</a>
-        </div>
-    </footer>
-
-</body>
-</html>
+    <!-- بخش نحوه کار با کارت‌های مدرن -->
+    <div class="how-it-works-section
