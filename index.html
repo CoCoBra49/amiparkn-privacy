@@ -12,11 +12,11 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', system-ui, sans-serif;
-            scroll-behavior: smooth; /* اسکرول نرم */
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #0b0f19; /* پس‌زمینه بسیار تیره */
+            background-color: #0b0f19;
             color: #f3f4f6;
             overflow-x: hidden;
             line-height: 1.6;
@@ -56,8 +56,8 @@
             top: 33px; /* زیر بنر بتا */
             left: 0;
             width: 100%;
-            background: rgba(11, 15, 25, 0.8);
-            backdrop-filter: blur(15px); /* افکت تاری */
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -92,7 +92,7 @@
             color: #ff3b30 !important;
             -webkit-text-fill-color: #ff3b30 !important;
             font-weight: 900;
-            text-shadow: 0 0 15px rgba(255, 59, 48, 0.8); /* درخشش نئونی */
+            text-shadow: 0 0 15px rgba(255, 59, 48, 0.8);
         }
 
         .beta-badge {
@@ -123,11 +123,11 @@
             box-shadow: 0 8px 25px rgba(0, 114, 255, 0.5);
         }
 
-        /* کانتینر تصویر بنر اصلی بالای سایت */
+        /* کانتینر تصویر بنر اصلی بالای سایت (انیمیشن GIF) */
         .hero-container {
             position: relative;
             width: 100%;
-            margin-top: 100px;
+            margin-top: 120px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -372,10 +372,12 @@
 
         /* بهینه‌سازی برای موبایل */
         @media (max-width: 768px) {
-            h1 { font-size: 2.4rem; }
-            header { padding: 10px 5%; }
-            .nav-btn { padding: 10px 20px; font-size: 0.85rem; }
+            h1 { font-size: 2.2rem; }
+            header { padding: 12px 5%; }
+            .hero-container { margin-top: 100px; }
+            .nav-btn { padding: 10px 18px; font-size: 0.85rem; }
             .section-title { font-size: 1.8rem; }
+            .faq-answer { padding-left: 0; margin-top: 8px; }
         }
     </style>
 </head>
@@ -395,10 +397,10 @@
         <a href="#how-it-works" class="nav-btn">Entdecken</a>
     </header>
 
-    <!-- کانتینر تصویر بنر گرافیکی جدید -->
+    <!-- کانتینر تصویر GIF انیمیشن هیرو -->
     <div class="hero-container">
         <div class="hero-banner-img">
-            <img src="hero-banner.png" alt="AMIPARKN Plattform Banner">
+            <img src="hero-animation.gif" alt="AMIPARKN Parken Neu Gedacht Animation">
         </div>
     </div>
 
@@ -408,7 +410,7 @@
         <p class="subtitle">Willkommen beim offiziellen Beta-Test! Werden Sie Teil der ersten Nutzer-Community und testen Sie die Zukunft des privaten Parkens.</p>
     </div>
 
-    <!-- بخش نحوه کار با کارت‌های مدرن -->
+    <!-- بخش نحوه کار -->
     <div class="how-it-works-section" id="how-it-works">
         <h2 class="section-title">Wie es funktioniert</h2>
         <div class="steps-grid">
@@ -444,7 +446,7 @@
         </div>
     </div>
 
-    <!-- بخش FAQ اختصاصی و زیبا -->
+    <!-- بخش FAQ -->
     <div class="faq-section">
         <h2 class="section-title">Häufig gestellte Fragen</h2>
         
@@ -453,7 +455,7 @@
                 <div class="faq-question"><span>⏱️</span> Wie funktioniert die Erstattung?</div>
                 <div class="faq-answer">
                     Eine Stornierung ist direkt in der App möglich:<br>
-                    • Mehr als 120 Min. vor Beginn: <strong>100% Erstattung</strong> des Parkpreis.<br>
+                    • Mehr als 120 Min. vor Beginn: <strong>100% Erstattung</strong> des Parkpreises.<br>
                     • 30 bis 120 Min. vor Beginn: <strong>70% Erstattung</strong>.<br>
                     • 2 bis 30 Min. vor Beginn: <strong>50% Erstattung</strong>.<br>
                     • Weniger als 2 Min. vor Beginn: Keine Erstattung.
@@ -477,7 +479,7 @@
         </div>
     </div>
 
-    <!-- فوتر حرفه‌ای -->
+    <!-- فوتر -->
     <footer>
         <div class="footer-logo logo"><span class="brand-text">AMIPARK</span><span class="highlight-n">N</span></div>
         <p>&copy; 2026 AMIPARKN (Beta). Alle Rechte vorbehalten.</p>
