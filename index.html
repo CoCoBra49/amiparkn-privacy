@@ -19,7 +19,6 @@
             line-height: 1.6;
         }
 
-        /* بنر اطلاع‌رسانی بتا */
         .beta-banner {
             background: linear-gradient(90deg, #ff9900, #ff5500);
             color: #000;
@@ -30,7 +29,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* هدر سایت */
         header {
             position: fixed;
             top: 33px;
@@ -56,6 +54,20 @@
             font-size: 1.5rem;
             font-weight: 800;
             color: #ffffff;
+        }
+
+        .brand-text {
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .highlight-n {
+            color: #ff3b30 !important;
+            -webkit-text-fill-color: #ff3b30 !important;
+            font-weight: 900;
+            text-shadow: 0 0 15px rgba(255, 59, 48, 0.6);
         }
 
         .beta-badge {
@@ -84,7 +96,6 @@
             box-shadow: 0 6px 20px rgba(0, 114, 255, 0.5);
         }
 
-        /* مدل سه‌بعدی */
         .hero-container {
             position: relative;
             width: 100%;
@@ -101,7 +112,6 @@
             border: none;
         }
 
-        /* محتوای اصلی */
         .main-content {
             max-width: 1000px;
             margin: -20px auto 50px auto;
@@ -118,21 +128,6 @@
             margin-bottom: 20px;
         }
 
-        /* برندینگ اختصاصی با حرف N قرمز */
-        .brand-text {
-            background: linear-gradient(45deg, #00f2fe, #4facfe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-        }
-
-        .highlight-n {
-            color: #ff3b30 !important;
-            -webkit-text-fill-color: #ff3b30 !important;
-            font-weight: 900;
-            text-shadow: 0 0 15px rgba(255, 59, 48, 0.6);
-        }
-
         p.subtitle {
             font-size: 1.2rem;
             color: #9ca3af;
@@ -140,12 +135,10 @@
             margin: 0 auto 30px auto;
         }
 
-        /* بخش نحوه کار (Wie es funktioniert) */
-        .how-it-works-section {
+        .how-it-works-section, .faq-section {
             max-width: 1000px;
             margin: 0 auto 80px auto;
             padding: 0 20px;
-            text-align: center;
         }
 
         .section-title {
@@ -153,6 +146,7 @@
             font-weight: 700;
             margin-bottom: 40px;
             color: #ffffff;
+            text-align: center;
         }
 
         .steps-grid {
@@ -168,12 +162,12 @@
             padding: 30px 20px;
             position: relative;
             backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            text-align: center;
+            transition: transform 0.3s ease;
         }
 
         .step-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(79, 172, 254, 0.4);
         }
 
         .step-number {
@@ -191,7 +185,6 @@
             justify-content: center;
             font-weight: 800;
             font-size: 0.9rem;
-            box-shadow: 0 4px 10px rgba(0, 114, 255, 0.4);
         }
 
         .step-icon {
@@ -211,32 +204,27 @@
             color: #9ca3af;
         }
 
-        /* ویژگی‌ها */
-        .features-section {
-            max-width: 1000px;
-            margin: 0 auto 80px auto;
-            padding: 0 20px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .feature-card {
+        /* FAQ accordion style */
+        .faq-item {
             background: rgba(22, 27, 34, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 25px;
-            border-radius: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            padding: 20px;
         }
 
-        .feature-card h3 {
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
             color: #4facfe;
             margin-bottom: 10px;
         }
 
-        /* فوتر */
+        .faq-answer {
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+
         footer {
             background: #07090f;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -256,7 +244,6 @@
         .footer-links a {
             color: #9ca3af;
             text-decoration: none;
-            transition: color 0.2s;
         }
 
         .footer-links a:hover {
@@ -266,12 +253,10 @@
 </head>
 <body>
 
-    <!-- بنر اطلاع‌رسانی بتا -->
     <div class="beta-banner">
         🚀 AMIPARKN befindet sich aktuell in der öffentlichen Beta-Phase (Open Beta)
     </div>
 
-    <!-- هدر -->
     <header>
         <div class="logo-container">
             <div class="logo"><span class="brand-text">AMIPARK</span><span class="highlight-n">N</span></div>
@@ -280,72 +265,76 @@
         <a href="#how-it-works" class="nav-btn">Wie es funktioniert</a>
     </header>
 
-    <!-- مدل سه‌بعدی Spline -->
     <div class="hero-container">
         <iframe src='https://my.spline.design/spline3dstarterfile-9XChBwK6pJUmWFrn2BkpsRYd/' frameborder='0' width='100%' height='100%' class="spline-frame"></iframe>
     </div>
 
-    <!-- معرفی اصلی -->
     <div class="main-content">
         <h1>Parken neu gedacht mit <span class="brand-text">AMIPARK</span><span class="highlight-n">N</span></h1>
         <p class="subtitle">Willkommen beim offiziellen Beta-Test! Werden Sie Teil der ersten Nutzer-Community und testen Sie die Zukunft des privaten Parkens.</p>
     </div>
 
-    <!-- بخش نحوه کار (Wie es funktioniert) -->
     <div class="how-it-works-section" id="how-it-works">
         <h2 class="section-title">Wie es funktioniert</h2>
         <div class="steps-grid">
-            
             <div class="step-card">
                 <div class="step-number">1</div>
                 <div class="step-icon">🔍</div>
                 <h3>Parkplatz suchen</h3>
                 <p>Finden Sie verfügbare private Parkplätze in Ihrer Nähe über unsere interaktive Karte.</p>
             </div>
-
             <div class="step-card">
                 <div class="step-number">2</div>
                 <div class="step-icon">📅</div>
                 <h3>Zeitraum wählen</h3>
                 <p>Wählen Sie einfach das gewünschte Datum und die Zeit für Ihren Parkplatz aus.</p>
             </div>
-
             <div class="step-card">
                 <div class="step-number">3</div>
                 <div class="step-icon">💳</div>
                 <h3>Sicher bezahlen</h3>
                 <p>Buchen und bezahlen Sie bargeldlos und sicher über Stripe direkt in der App.</p>
             </div>
-
             <div class="step-card">
                 <div class="step-number">4</div>
                 <div class="step-icon">🚗</div>
                 <h3>Einfach parken</h3>
                 <p>Navigieren Sie zum Parkplatz und genießen Sie eine stressfreie Ankunft.</p>
             </div>
-
         </div>
     </div>
 
-    <!-- ویژگی‌ها -->
-    <div class="features-section">
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>📍 Echtzeit-Suche</h3>
-                <p>Finden Sie freie Parkplätze in Ihrer Umgebung mit interaktiver Navigation.</p>
+    <!-- بخش FAQ برگرفته از اپلیکیشن -->
+    <div class="faq-section">
+        <h2 class="section-title">Häufig gestellte Fragen (FAQ)</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">💳 Wie funktioniert die Stornierung und Erstattung?</div>
+            <div class="faq-answer">
+                Eine Stornierung ist direkt in der App möglich:<br>
+                • Mehr als 120 Min. vor Beginn: <strong>100% Erstattung</strong> des Parkpreis.<br>
+                • 30 bis 120 Min. vor Beginn: <strong>70% Erstattung</strong>.<br>
+                • 2 bis 30 Min. vor Beginn: <strong>50% Erstattung</strong>.<br>
+                • Weniger als 2 Min. vor Beginn: Keine Erstattung.
             </div>
-            <div class="feature-card">
-                <h3>🔒 Sichere Zahlungen</h3>
-                <p>Nutzen Sie geschützte und einfache Online-Zahlungsmethoden via Stripe.</p>
-            </div>
-            <div class="feature-card">
-                <h3>💼 Parkplatz vermieten</h3>
-                <p>Bieten Sie Ihren ungenutzten Privatparkplatz an und verdienen Sie Geld.</p>
-            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">🔒 Sind meine Zahlungen sicher?</div>
+            <div class="faq-answer">Ja, die Zahlungsabwicklung erfolgt verschlüsselt und nach höchsten Sicherheitsstandards über Stripe. Es werden keine Kreditkartendaten auf unseren Servern gespeichert.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">🅿️ Wie kann ich meinen eigenen Parkplatz vermieten?</div>
+            <div class="faq-answer">Sie können Ihren privaten Stellplatz ganz einfach über die AMIPARKN App registrieren, Verfügbarkeiten festlegen und direkt Geld verdienen.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">✉️ Wie erreiche ich den Support?</div>
+            <div class="faq-answer">Unser Support-Team hilft Ihnen bei allen Fragen gerne weiter. Kontaktieren Sie uns direkt per E-Mail unter <a href="mailto:amiparkn.support@gmail.com" style="color: #00f2fe;">amiparkn.support@gmail.com</a>.</div>
         </div>
     </div>
 
-    <!-- فوتر با لینک‌های حقوقی -->
     <footer>
         <p>&copy; 2026 AMIPARKN (Beta). Alle Rechte vorbehalten.</p>
         <div class="footer-links">
