@@ -33,7 +33,7 @@
         /* هدر سایت */
         header {
             position: fixed;
-            top: 33px; /* با توجه به ارتفاع بنر بتا */
+            top: 33px;
             left: 0;
             width: 100%;
             background: rgba(11, 15, 25, 0.85);
@@ -90,7 +90,7 @@
         .hero-container {
             position: relative;
             width: 100%;
-            height: 70vh;
+            height: 65vh;
             margin-top: 80px;
             display: flex;
             justify-content: center;
@@ -106,7 +106,7 @@
         /* محتوای اصلی */
         .main-content {
             max-width: 1000px;
-            margin: -30px auto 60px auto;
+            margin: -20px auto 50px auto;
             text-align: center;
             padding: 0 20px;
             position: relative;
@@ -130,112 +130,78 @@
             font-size: 1.2rem;
             color: #9ca3af;
             max-width: 750px;
-            margin: 0 auto 40px auto;
+            margin: 0 auto 30px auto;
         }
 
-        /* کارت‌های دانلود بتا (Android vs iOS) */
-        .download-section {
-            max-width: 900px;
+        /* بخش نحوه کار (Wie es funktioniert) */
+        .how-it-works-section {
+            max-width: 1000px;
             margin: 0 auto 80px auto;
             padding: 0 20px;
+            text-align: center;
         }
 
-        .download-grid {
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #ffffff;
+        }
+
+        .steps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
         }
 
-        .download-card {
-            background: rgba(22, 27, 34, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .step-card {
+            background: rgba(22, 27, 34, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            padding: 30px;
-            text-align: left;
+            padding: 30px 20px;
             position: relative;
             backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        .download-card.android {
-            border-color: rgba(76, 175, 80, 0.3);
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(79, 172, 254, 0.4);
         }
 
-        .download-card.ios {
-            border-color: rgba(0, 198, 255, 0.3);
-        }
-
-        .card-header {
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0, 114, 255, 0.4);
         }
 
-        .card-icon {
-            font-size: 2rem;
+        .step-icon {
+            font-size: 2.5rem;
+            margin-top: 10px;
+            margin-bottom: 15px;
         }
 
-        .card-title h3 {
-            font-size: 1.3rem;
+        .step-card h3 {
+            font-size: 1.2rem;
             color: #fff;
-        }
-
-        .card-title p {
-            font-size: 0.85rem;
-            color: #9ca3af;
-        }
-
-        .steps-list {
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-            color: #d1d5db;
-        }
-
-        .steps-list ol {
-            padding-left: 20px;
-        }
-
-        .steps-list li {
             margin-bottom: 10px;
         }
 
-        .btn-card {
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .btn-android {
-            background: #2e7d32;
-            color: white;
-        }
-
-        .btn-android:hover {
-            background: #388e3c;
-        }
-
-        .btn-group-link {
-            background: #1565c0;
-            color: white;
-        }
-
-        .btn-group-link:hover {
-            background: #1976d2;
-        }
-
-        .btn-ios {
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
-            color: white;
-        }
-
-        .btn-ios:hover {
-            opacity: 0.9;
+        .step-card p {
+            font-size: 0.9rem;
+            color: #9ca3af;
         }
 
         /* ویژگی‌ها */
@@ -263,6 +229,7 @@
             margin-bottom: 10px;
         }
 
+        /* فوتر و لینک‌های حقوقی */
         footer {
             background: #07090f;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -270,6 +237,23 @@
             padding: 30px 20px;
             color: #6b7280;
             font-size: 0.85rem;
+        }
+
+        .footer-links {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #00f2fe;
         }
     </style>
 </head>
@@ -286,7 +270,7 @@
             <div class="logo">AMIPARKN</div>
             <span class="beta-badge">BETA</span>
         </div>
-        <a href="#download" class="nav-btn">Beta-Testen</a>
+        <a href="#how-it-works" class="nav-btn">Wie es funktioniert</a>
     </header>
 
     <!-- مدل سه‌بعدی Spline -->
@@ -300,44 +284,37 @@
         <p class="subtitle">Willkommen beim offiziellen Beta-Test! Werden Sie Teil der ersten Nutzer-Community und testen Sie die Zukunft des privaten Parkens.</p>
     </div>
 
-    <!-- بخش دانلود بتا -->
-    <div class="download-section" id="download">
-        <div class="download-grid">
+    <!-- بخش نحوه کار (Wie es funktioniert) -->
+    <div class="how-it-works-section" id="how-it-works">
+        <h2 class="section-title">Wie es funktioniert</h2>
+        <div class="steps-grid">
             
-            <!-- Android Card -->
-            <div class="download-card android">
-                <div class="card-header">
-                    <span class="card-icon">🤖</span>
-                    <div class="card-title">
-                        <h3>Android (Google Play Beta)</h3>
-                        <p>Anleitung zur Teilnahme am Beta-Test</p>
-                    </div>
-                </div>
-                <div class="steps-list">
-                    <ol>
-                        <li>Treten Sie zuerst unserer offiziellen <strong>Google Gruppe</strong> bei (erforderlich für den Freischaltzugriff).</li>
-                        <li>Öffnen Sie danach den <strong>Google Play Store Link</strong>, um die Beta-App herunterzuladen.</li>
-                    </ol>
-                </div>
-                <!-- جایگزین کردن لینک‌های واقعی گروه گوگل و گوگل‌پلی -->
-                <a href="https://groups.google.com" target="_blank" class="btn-card btn-group-link">1. Google Gruppe beitreten</a>
-                <a href="#" class="btn-card btn-android" style="margin-top: 10px;">2. Im Play Store herunterladen</a>
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-icon">🔍</div>
+                <h3>Parkplatz suchen</h3>
+                <p>Finden Sie verfügbare private Parkplätze in Ihrer Nähe über unsere interaktive Karte.</p>
             </div>
 
-            <!-- iOS Card -->
-            <div class="download-card ios">
-                <div class="card-header">
-                    <span class="card-icon">🍏</span>
-                    <div class="card-title">
-                        <h3>iOS (Apple TestFlight)</h3>
-                        <p>Für iPhone & iPad Nutzer</p>
-                    </div>
-                </div>
-                <div class="steps-list">
-                    <p style="margin-bottom: 15px;">Laden Sie die <strong>TestFlight App</strong> aus dem App Store herunter und treten Sie dem Test über den folgenden Einladungslink bei:</p>
-                </div>
-                <!-- جایگزین کردن لینک واقعی TestFlight -->
-                <a href="#" class="btn-card btn-ios">Über Apple TestFlight testen</a>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-icon">📅</div>
+                <h3>Zeitraum wählen</h3>
+                <p>Wählen Sie einfach das gewünschte Datum und die Zeit für Ihren Parkplatz aus.</p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-icon">💳</div>
+                <h3>Sicher bezahlen</h3>
+                <p>Buchen und bezahlen Sie bargeldlos und sicher über Stripe direkt in der App.</p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <div class="step-icon">🚗</div>
+                <h3>Einfach parken</h3>
+                <p>Navigieren Sie zum Parkplatz und genießen Sie eine stressfreie Ankunft.</p>
             </div>
 
         </div>
@@ -355,14 +332,19 @@
                 <p>Nutzen Sie geschützte und einfache Online-Zahlungsmethoden via Stripe.</p>
             </div>
             <div class="feature-card">
-                <h3>🚗 Parkplatz vermieten</h3>
+                <h3>💼 Parkplatz vermieten</h3>
                 <p>Bieten Sie Ihren ungenutzten Privatparkplatz an und verdienen Sie Geld.</p>
             </div>
         </div>
     </div>
 
+    <!-- فوتر با لینک‌های حقوقی -->
     <footer>
         <p>&copy; 2026 AMIPARKN (Beta). Alle Rechte vorbehalten.</p>
+        <div class="footer-links">
+            <a href="impressum.html">Impressum</a>
+            <a href="privacy.html">Datenschutz</a>
+        </div>
     </footer>
 
 </body>
