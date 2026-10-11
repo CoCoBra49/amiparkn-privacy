@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMIPARKN - Intelligente Parkplatz-Plattform</title>
+    <title>AMIPARKN - Intelligente Parkplatz-Plattform (Beta)</title>
     <style>
         * {
             margin: 0;
@@ -19,10 +19,21 @@
             line-height: 1.6;
         }
 
+        /* بنر اطلاع‌رسانی بتا */
+        .beta-banner {
+            background: linear-gradient(90deg, #ff9900, #ff5500);
+            color: #000;
+            text-align: center;
+            padding: 8px 15px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
         /* هدر سایت */
         header {
             position: fixed;
-            top: 0;
+            top: 33px; /* با توجه به ارتفاع بنر بتا */
             left: 0;
             width: 100%;
             background: rgba(11, 15, 25, 0.85);
@@ -32,7 +43,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
+            padding: 15px 5%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .logo {
@@ -41,7 +58,16 @@
             background: linear-gradient(45deg, #00f2fe, #4facfe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
+        }
+
+        .beta-badge {
+            background: rgba(0, 242, 254, 0.15);
+            color: #00f2fe;
+            border: 1px solid rgba(0, 242, 254, 0.4);
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
         }
 
         .nav-btn {
@@ -53,7 +79,6 @@
             font-weight: 600;
             font-size: 0.9rem;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.3);
         }
 
         .nav-btn:hover {
@@ -61,12 +86,12 @@
             box-shadow: 0 6px 20px rgba(0, 114, 255, 0.5);
         }
 
-        /* بخش نمایش مدل سه‌بعدی */
+        /* مدل سه‌بعدی */
         .hero-container {
             position: relative;
             width: 100%;
-            height: 75vh;
-            margin-top: 70px;
+            height: 70vh;
+            margin-top: 80px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -81,7 +106,7 @@
         /* محتوای اصلی */
         .main-content {
             max-width: 1000px;
-            margin: -40px auto 60px auto;
+            margin: -30px auto 60px auto;
             text-align: center;
             padding: 0 20px;
             position: relative;
@@ -89,11 +114,10 @@
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 20px;
-            letter-spacing: -0.5px;
         }
 
         h1 span {
@@ -103,118 +127,166 @@
         }
 
         p.subtitle {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: #9ca3af;
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto 40px auto;
         }
 
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 60px;
-        }
-
-        .btn-main {
-            padding: 15px 35px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 30px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-gradient {
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
-            color: white;
-            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.4);
-        }
-
-        .btn-gradient:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 114, 255, 0.6);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-        }
-
-        .btn-outline:hover {
-            border-color: #00c6ff;
-            background: rgba(0, 198, 255, 0.05);
-        }
-
-        /* بخش ویژگی‌ها (Grid) */
-        .features-section {
-            max-width: 1100px;
-            margin: 0 auto 100px auto;
+        /* کارت‌های دانلود بتا (Android vs iOS) */
+        .download-section {
+            max-width: 900px;
+            margin: 0 auto 80px auto;
             padding: 0 20px;
         }
 
-        .section-title {
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 25px;
+        }
+
+        .download-card {
+            background: rgba(22, 27, 34, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: left;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .download-card.android {
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+
+        .download-card.ios {
+            border-color: rgba(0, 198, 255, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+        }
+
+        .card-title h3 {
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        .card-title p {
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        .steps-list {
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            color: #d1d5db;
+        }
+
+        .steps-list ol {
+            padding-left: 20px;
+        }
+
+        .steps-list li {
+            margin-bottom: 10px;
+        }
+
+        .btn-card {
+            display: block;
+            width: 100%;
             text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 50px;
+            padding: 12px 20px;
+            border-radius: 12px;
             font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-android {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .btn-android:hover {
+            background: #388e3c;
+        }
+
+        .btn-group-link {
+            background: #1565c0;
+            color: white;
+        }
+
+        .btn-group-link:hover {
+            background: #1976d2;
+        }
+
+        .btn-ios {
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: white;
+        }
+
+        .btn-ios:hover {
+            opacity: 0.9;
+        }
+
+        /* ویژگی‌ها */
+        .features-section {
+            max-width: 1000px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .feature-card {
-            background: rgba(22, 27, 34, 0.7);
+            background: rgba(22, 27, 34, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 35px 30px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 198, 255, 0.4);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            padding: 25px;
+            border-radius: 15px;
         }
 
         .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #ffffff;
+            color: #4facfe;
+            margin-bottom: 10px;
         }
 
-        .feature-card p {
-            color: #9ca3af;
-            font-size: 1rem;
-        }
-
-        /* فوتر */
         footer {
             background: #07090f;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 20px;
             color: #6b7280;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
+    <!-- بنر اطلاع‌رسانی بتا -->
+    <div class="beta-banner">
+        🚀 AMIPARKN befindet sich aktuell in der öffentlichen Beta-Phase (Open Beta)
+    </div>
+
     <!-- هدر -->
     <header>
-        <div class="logo">AMIPARKN</div>
-        <a href="#download" class="nav-btn">App herunterladen</a>
+        <div class="logo-container">
+            <div class="logo">AMIPARKN</div>
+            <span class="beta-badge">BETA</span>
+        </div>
+        <a href="#download" class="nav-btn">Beta-Testen</a>
     </header>
 
     <!-- مدل سه‌بعدی Spline -->
@@ -225,39 +297,72 @@
     <!-- معرفی اصلی -->
     <div class="main-content">
         <h1>Parken neu gedacht mit <span>AMIPARKN</span></h1>
-        <p class="subtitle">Finden, reservieren und vermieten Sie private Parkplätze in Ihrer Nähe ganz einfach, sicher und digital.</p>
-        
-        <div class="cta-buttons" id="download">
-            <a href="#" class="btn-main btn-gradient">📱 App für iOS & Android</a>
-            <a href="#" class="btn-main btn-outline">Mehr erfahren</a>
+        <p class="subtitle">Willkommen beim offiziellen Beta-Test! Werden Sie Teil der ersten Nutzer-Community und testen Sie die Zukunft des privaten Parkens.</p>
+    </div>
+
+    <!-- بخش دانلود بتا -->
+    <div class="download-section" id="download">
+        <div class="download-grid">
+            
+            <!-- Android Card -->
+            <div class="download-card android">
+                <div class="card-header">
+                    <span class="card-icon">🤖</span>
+                    <div class="card-title">
+                        <h3>Android (Google Play Beta)</h3>
+                        <p>Anleitung zur Teilnahme am Beta-Test</p>
+                    </div>
+                </div>
+                <div class="steps-list">
+                    <ol>
+                        <li>Treten Sie zuerst unserer offiziellen <strong>Google Gruppe</strong> bei (erforderlich für den Freischaltzugriff).</li>
+                        <li>Öffnen Sie danach den <strong>Google Play Store Link</strong>, um die Beta-App herunterzuladen.</li>
+                    </ol>
+                </div>
+                <!-- جایگزین کردن لینک‌های واقعی گروه گوگل و گوگل‌پلی -->
+                <a href="https://groups.google.com" target="_blank" class="btn-card btn-group-link">1. Google Gruppe beitreten</a>
+                <a href="#" class="btn-card btn-android" style="margin-top: 10px;">2. Im Play Store herunterladen</a>
+            </div>
+
+            <!-- iOS Card -->
+            <div class="download-card ios">
+                <div class="card-header">
+                    <span class="card-icon">🍏</span>
+                    <div class="card-title">
+                        <h3>iOS (Apple TestFlight)</h3>
+                        <p>Für iPhone & iPad Nutzer</p>
+                    </div>
+                </div>
+                <div class="steps-list">
+                    <p style="margin-bottom: 15px;">Laden Sie die <strong>TestFlight App</strong> aus dem App Store herunter und treten Sie dem Test über den folgenden Einladungslink bei:</p>
+                </div>
+                <!-- جایگزین کردن لینک واقعی TestFlight -->
+                <a href="#" class="btn-card btn-ios">Über Apple TestFlight testen</a>
+            </div>
+
         </div>
     </div>
 
     <!-- ویژگی‌ها -->
     <div class="features-section">
-        <h2 class="section-title">Warum AMIPARKN?</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">📍</div>
-                <h3>Echtzeit-Navigation</h3>
-                <p>Findenو Sie sofort freie Parkplätze in Ihrer Umgebung dank interaktiver Live-Karten und präziser Wegbeschreibung.</p>
+                <h3>📍 Echtzeit-Suche</h3>
+                <p>Finden Sie freie Parkplätze in Ihrer Umgebung mit interaktiver Navigation.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>Sichere Zahlungen</h3>
-                <p>Profitieren Sie von nahtlosen und geschützten Transaktionen direkt über moderne Zahlungsschnittstellen.</p>
+                <h3>🔒 Sichere Zahlungen</h3>
+                <p>Nutzen Sie geschützte und einfache Online-Zahlungsmethoden via Stripe.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🚗</div>
-                <h3>Passiven Umsatz generieren</h3>
-                <p>Vermieten Sie Ihren ungenutzten Privatparkplatz bei Nichtgebrauch und verdienen Sie ganz unkompliziert Geld dazu.</p>
+                <h3>🚗 Parkplatz vermieten</h3>
+                <p>Bieten Sie Ihren ungenutzten Privatparkplatz an und verdienen Sie Geld.</p>
             </div>
         </div>
     </div>
 
-    <!-- فوتر -->
     <footer>
-        <p>&copy; 2026 AMIPARKN. Alle Rechte vorbehalten.</p>
+        <p>&copy; 2026 AMIPARKN (Beta). Alle Rechte vorbehalten.</p>
     </footer>
 
 </body>
