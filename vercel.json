@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm ci --prefix apex-3d-site-main",
+  "buildCommand": "npm run build --prefix apex-3d-site-main && cp apex-3d-site-main/impressum.html apex-3d-site-main/privacy.html apex-3d-site-main/legal.css apex-3d-site-main/dist/ && if [ -f 404.html ]; then cp 404.html apex-3d-site-main/dist/; fi",
+  "outputDirectory": "apex-3d-site-main/dist"
+}
